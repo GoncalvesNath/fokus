@@ -7,7 +7,9 @@ const titulo = document.querySelector('.app__title');
 const botoes = document.querySelectorAll('.app__card-button');
 const startPauseBt = document.querySelector('#start-pause')
 const musicaFocoInput = document.querySelector('#alternar-musica');
-const iniciarOuPausarBt = document.querySelector('#start-pause span')
+const iniciarOuPausarBt = document.querySelector('#start-pause span');
+const iniciarOuPausarBtIcone = document.querySelector(".app__card-primary-butto-icon") 
+
 const musica = new Audio('/sons/luna-rise-part-one.mp3') /*poderiamos usar o readfile mas ele pode atrasar o caregamento do projeto, por isso o uso de variáveis no inico é mais funcional */
 const audioPlay = new Audio('/sons/play.wav');
 const audioPausa = new Audio('/sons/pause.mp3');
@@ -94,10 +96,12 @@ function iniciarOuPausar() {
     audioPlay.play()
     intervaloId = setInterval(contagemRegressiva, 1000) /*1000 determina 1 segundo pois a contagem é feita em milisegundos*/
     iniciarOuPausarBt.textContent = "Pausar"
+    iniciarOuPausarBtIcone.setAttribute('src', `/imagens/pause.png`)
 }
 
 function zerar() {
     clearInterval(intervaloId)
     iniciarOuPausarBt.textContent = "Começar"
+    iniciarOuPausarBtIcone.setAttribute('src', `/imagens/play_arrow.png`)
     intervaloId = null
 }
